@@ -1,5 +1,5 @@
-//def response = httpRequest "http://uranus2.sagefr.adinternal.com:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query"
-def response = httpRequest "http://focus.de"
+def response = httpRequest "http://uranus2.sagefr.adinternal.com:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query"
+//def response = httpRequest "http://focus.de"
 println("Status: "+response.status)
 println("Content: "+response.content)
 //echo response.status 
