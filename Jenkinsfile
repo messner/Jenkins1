@@ -1,5 +1,6 @@
-def response = httpRequest "http://uranus2.sagefr.adinternal.com:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query"
-echo response
+//def response = httpRequest "http://uranus2.sagefr.adinternal.com:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query"
+def response = httpRequest "http://focus.de"
+echo response.status + " - " + response.content
 
 node {
    stage 'Stage 1'
