@@ -1,3 +1,6 @@
+def response = httpRequest "http://uranus2.sagefr.adinternal.com:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query"
+echo response
+
 node {
    stage 'Stage 1'
    		echo 'Hello World 1'
