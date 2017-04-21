@@ -1,4 +1,4 @@
-def response = httpRequest 'http://10.169.140.65:8144:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query'
+def response = httpRequest 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query'
 //def response = httpRequest "http://focus.de"
 println("Status: "+response.status)
 println("Content: "+response.content)
