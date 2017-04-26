@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurper
+
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 def aws_source = 'AWS-JPGA-TEST4'
 def response = httpRequest authentication: "${credId}", \
