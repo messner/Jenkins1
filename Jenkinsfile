@@ -5,7 +5,7 @@ def response = httpRequest authentication: "${credId}", url: 'http://10.169.140.
 //def response = httpRequest authentication: '1dc551f1-a2cb-4965-9bee-346302f60433', url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query'
 //def response = httpRequest "http://focus.de"
 println("Status: "+response.status)
-println("UUID: "+response.content.$resources[0].$UUID)
+println("UUID: "+response.content.$descriptor)
 println("Content: "+response.content)
 //httpRequest "http://uranus2.sagefr.adinternal.com:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query"
 //echo response.status 
