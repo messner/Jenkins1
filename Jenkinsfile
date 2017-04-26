@@ -1,6 +1,8 @@
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 def aws_source = 'AWS-JPGA-TEST4'
-def response = httpRequest authentication: "${credId}", url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + "${aws_source}" + '\')'
+def response = httpRequest authentication: "${credId}", \
+   contentType: 'APPLICATION_JSON', \
+   url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + "${aws_source}" + '\')'
 //def response = httpRequest authentication: "${credId}", url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'AWS-JPGA-TEST4\')'
 //def response = httpRequest authentication: '1dc551f1-a2cb-4965-9bee-346302f60433', url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query'
 //def response = httpRequest "http://focus.de"
