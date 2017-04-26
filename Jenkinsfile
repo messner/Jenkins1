@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-import groovy.json.JsonSlurper
+//import groovy.json.JsonSlurper
 
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 def aws_source = 'AWS-JPGA-TEST4'
@@ -10,7 +10,7 @@ println("Status: "+response.status)
 //println("Content: "+response.content)
 //println("UUID: "+response.content.$resources[0].$uuid)
 
-def slurper = new groovy.json.JsonSlurper()
+def slurper = new groovy.json.JsonSlurperClassic()
 def result = slurper.parseText('{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}')
 
 //def jsonSlurper = new JsonSlurper()
