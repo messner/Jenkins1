@@ -4,8 +4,17 @@ def response = httpRequest authentication: "${credId}", \
    contentType: 'APPLICATION_JSON', \
    url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + "${aws_source}" + '\')'
 println("Status: "+response.status)
-println("Content: "+response.content)
-println("UUID: "+response.content.$resources[0].$uuid)
+//println("Content: "+response.content)
+//println("UUID: "+response.content.$resources[0].$uuid)
+
+
+
+def jsonSlurper = new JsonSlurper()
+def object = jsonSlurper.parseText('{ "name": "John Doe" } /* some comment */')
+
+assert object instanceof Map
+assert object.name == 'John Doe'
+
 
 
 //def response = httpRequest authentication: "${credId}", url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'AWS-JPGA-TEST4\')'
