@@ -9,6 +9,8 @@ def response = httpRequest authentication: "${credId}", \
 println("Status: "+response.status)
 //println("UUID: "+response.content.$descriptor)
 println("Content: "+response.content)
+def result = response.getContent()
+
 //httpRequest "http://uranus2.sagefr.adinternal.com:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query"
 //echo response.status 
 
