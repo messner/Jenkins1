@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-import groovy.json.JsonSlurperClassic
+import groovy.json.JsonSlurper
 
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 def aws_source = 'AWS-JPGA-TEST4'
@@ -15,8 +15,8 @@ println("Status: "+response.status)
 def jsonSlurper = new JsonSlurper()
 def object = jsonSlurper.parseText('{ "name": "John Doe" } /* some comment */')
 
-assert object instanceof Map
-assert object.name == 'John Doe'
+//assert object instanceof Map
+//assert object.name == 'John Doe'
 
 
 
