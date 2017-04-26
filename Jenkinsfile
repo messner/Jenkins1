@@ -12,7 +12,7 @@ println("Status: "+response.status)
 
 
 
-//def jsonSlurper = new JsonSlurper()
+def jsonSlurper = new JsonSlurper()
 //def object = jsonSlurper.parseText('{ "name": "John Doe" } /* some comment */')
 
 //assert object instanceof Map
