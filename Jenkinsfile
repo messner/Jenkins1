@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-import groovy.json.JsonSlurper
+import groovy.json.JsonSlurperClassic
 
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 def aws_source = 'AWS-JPGA-TEST4'
