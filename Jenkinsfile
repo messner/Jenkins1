@@ -10,7 +10,8 @@ println("Status: "+response.status)
 //println("Content: "+response.content)
 //println("UUID: "+response.content.$resources[0].$uuid)
 
-def slurper = new groovy.json.JsonSlurperClassic()
+//def slurper = new groovy.json.JsonSlurperClassic()
+def slurper = new groovy.json.JsonSlurper()
 def result = slurper.parseText('{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}')
 
 //def jsonSlurper = new JsonSlurper()
