@@ -13,7 +13,7 @@ println("Status: "+response.status)
 //def slurper = new groovy.json.JsonSlurperClassic()
 //def slurper = new groovy.json.JsonSlurper()
 @NonCPS
-def slurper = JsonSlurper()
+def slurper = new JsonSlurper()
 def result = slurper.parseText('{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}')
 
 //def jsonSlurper = new JsonSlurper()
