@@ -11,7 +11,7 @@ def aws_source = 'AWS-JPGA-TEST4'
 //println("UUID: "+response.content.$resources[0].$uuid)
 
 @NonCPS
-def slurper = new groovy.json.JsonSlurperClassic()
+def slurper = groovy.json.JsonSlurperClassic()
 //def slurper = new groovy.json.JsonSlurper()
 
 //def slurper = new JsonSlurper()
