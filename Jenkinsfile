@@ -4,7 +4,7 @@
 //import groovy.json.JsonSlurperClassic 
 import groovy.json.JsonSlurper 
 def jsonSlurper = new JsonSlurper()
-def object = jsonSlurper.parseText('{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}')
+//def object = jsonSlurper.parseText('{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}')
 
 
 
