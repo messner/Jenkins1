@@ -18,7 +18,7 @@ def response = httpRequest authentication: "${credId}", \
    contentType: 'APPLICATION_JSON', \
    url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + "${aws_source}" + '\')'
 println("Status: "+response.status)
-println("Content: "+response.content)
+//println("Content: "+response.content)
 //println("UUID: "+response.content.$resources[0].$uuid)
 
 //@NonCPS
@@ -60,6 +60,7 @@ node {
       //echo result.person.name
       def result = slurpJSON(response.content)
       echo result.$url
+      println("UUID: "+result.$resources[0].$uuid)
       //def response = httpRequest "http://10.169.140.65:8144/syracuse-main/html/main.html?url=%2Fsdata%2Fsyracuse%2Fcollaboration%2Fsyracuse%2Faws_instances%3Frepresentation%3Daws_instance.%24query%26where%3D(name%2520like%2520%27%2525%2525%27)%26filter%3DmyInstances"
       //def response = httpRequest "http://uranus2.sagefr.adinternal.com:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query"
       //echo response
