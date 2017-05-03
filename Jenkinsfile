@@ -2,10 +2,13 @@
 //import groovy.json.JsonSlurper
 
 //import groovy.json.JsonSlurperClassic 
-import groovy.json.JsonSlurper 
-def jsonSlurper = new JsonSlurper()
+//import groovy.json.JsonSlurper 
+//def jsonSlurper = new JsonSlurper()
 //def object = jsonSlurper.parseText('{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}')
 
+def slurpJSON() {
+   return new groovy.json.JsonSlurper().parseText('{ "name": "John Doe" } /* some comment */');
+}
 
 
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
@@ -50,6 +53,7 @@ node {
          echo jm
    stage 'Stage 3' 
       echo 'Stage 3'
+      def result = slurpJSON()
       //def response = httpRequest "http://10.169.140.65:8144/syracuse-main/html/main.html?url=%2Fsdata%2Fsyracuse%2Fcollaboration%2Fsyracuse%2Faws_instances%3Frepresentation%3Daws_instance.%24query%26where%3D(name%2520like%2520%27%2525%2525%27)%26filter%3DmyInstances"
       //def response = httpRequest "http://uranus2.sagefr.adinternal.com:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query"
       //echo response
