@@ -10,10 +10,11 @@ def aws_source = 'AWS-JPGA-TEST4'
 //println("Content: "+response.content)
 //println("UUID: "+response.content.$resources[0].$uuid)
 
-//def slurper = new groovy.json.JsonSlurperClassic()
-//def slurper = new groovy.json.JsonSlurper()
 @NonCPS
-def slurper = new JsonSlurper()
+def slurper = new groovy.json.JsonSlurperClassic()
+//def slurper = new groovy.json.JsonSlurper()
+
+//def slurper = new JsonSlurper()
 def result = slurper.parseText('{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}')
 
 //def jsonSlurper = new JsonSlurper()
