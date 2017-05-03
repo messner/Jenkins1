@@ -23,9 +23,10 @@ node {
          echo jm
    stage 'Stage 3' 
       echo 'Stage 3'
-      def result = slurpJSON(response.content)
-      echo result.$url
-      println("UUID: "+result.$resources[0].$uuid)
-   
+      if (response.status == 200) {
+         def result = slurpJSON(response.content)
+         def uuid = result.$resources[0].$uuid
+         println("UUID: "+uuid)
+      }
    
 }
