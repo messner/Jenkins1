@@ -55,9 +55,9 @@ node {
    stage 'Stage 3' 
       echo 'Stage 3'
       //def result = slurpJSON('{ "name": "Jonny Depp" }')
-      def result = slurpJSON(response)
+      def result = slurpJSON('{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}')
       //echo result.name 
-      echo result
+      echo result.person
       //def response = httpRequest "http://10.169.140.65:8144/syracuse-main/html/main.html?url=%2Fsdata%2Fsyracuse%2Fcollaboration%2Fsyracuse%2Faws_instances%3Frepresentation%3Daws_instance.%24query%26where%3D(name%2520like%2520%27%2525%2525%27)%26filter%3DmyInstances"
       //def response = httpRequest "http://uranus2.sagefr.adinternal.com:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query"
       //echo response
