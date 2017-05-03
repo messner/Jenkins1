@@ -45,7 +45,7 @@ def aws_source = 'AWS-JPGA-TEST4'
 node {
    stage 'Stage 1'
    		echo 'Hello World 1'
-         def config = jsonParse.parseText('{ "name": "John Doe" }
+         def config = jsonParse.parseText('{ "name": "John Doe" }')
    stage 'Stage 2'
    		def jm = "test"
          echo jm
