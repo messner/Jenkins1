@@ -1,10 +1,12 @@
 #!/usr/bin/env groovy
 //import groovy.json.JsonSlurper
 
-import groovy.json.JsonSlurperClassic 
+//import groovy.json.JsonSlurperClassic 
+import groovy.json.JsonSlurper 
 @NonCPS
 def jsonParse(def json) {
-    new groovy.json.JsonSlurperClassic().parseText(json)
+    //new groovy.json.JsonSlurperClassic().parseText(json)
+    new groovy.json.JsonSlurper().parseText(json)
 }
 
 
