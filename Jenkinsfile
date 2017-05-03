@@ -1,5 +1,13 @@
 #!/usr/bin/env groovy
-import groovy.json.JsonSlurper
+//import groovy.json.JsonSlurper
+
+import groovy.json.JsonSlurperClassic 
+@NonCPS
+def jsonParse(def json) {
+    new groovy.json.JsonSlurperClassic().parseText(json)
+}
+
+
 
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 def aws_source = 'AWS-JPGA-TEST4'
@@ -10,12 +18,12 @@ def aws_source = 'AWS-JPGA-TEST4'
 //println("Content: "+response.content)
 //println("UUID: "+response.content.$resources[0].$uuid)
 
-@NonCPS
-def slurper = groovy.json.JsonSlurperClassic()
+//@NonCPS
+//def slurper = groovy.json.JsonSlurperClassic()
 //def slurper = new groovy.json.JsonSlurper()
 
 //def slurper = new JsonSlurper()
-def result = slurper.parseText('{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}')
+//def result = slurper.parseText('{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}')
 
 //def jsonSlurper = new JsonSlurper()
 //def object = jsonSlurper.parseText('{ "name": "John Doe" } /* some comment */')
@@ -37,6 +45,7 @@ def result = slurper.parseText('{"person":{"name":"Guillaume","age":33,"pets":["
 node {
    stage 'Stage 1'
    		echo 'Hello World 1'
+         def config = jsonParse.parseText('{ "name": "John Doe" }
    stage 'Stage 2'
    		def jm = "test"
          echo jm
