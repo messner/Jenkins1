@@ -8,7 +8,7 @@ def slurpJSON(json) {
 
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 def aws_source = 'CLONE_AWS-JM-TEST1'
-def aws_dest = 'CLONE_AWS-JM-TEST4'
+def aws_dest = 'CLONE_AWS-JM-TEST5'
 def response = httpRequest authentication: "${credId}", \
    contentType: 'APPLICATION_JSON', \
    url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + "${aws_source}" + '\')'
