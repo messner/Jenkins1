@@ -13,6 +13,11 @@ def response = httpRequest authentication: "${credId}", \
    contentType: 'APPLICATION_JSON', \
    url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + "${aws_source}" + '\')'
 println("Status: "+response.status)
+
+response = httpRequest authentication: "${credId}", \
+   contentType: 'APPLICATION_JSON', \
+   url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + "${aws_source}" + '\')'
+println("Status22222: "+response.status)
 //println("Content: "+response.content)
 //println("UUID: "+response.content.$resources[0].$uuid)
 
