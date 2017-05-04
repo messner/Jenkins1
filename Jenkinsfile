@@ -34,7 +34,7 @@ node {
          httpRequest authentication: "${credId}", \
          contentType: 'NOT_SET', \
          acceptType: 'TEXT_HTML', \
-         httpMode: 'POST', \
+         httpMode: 'GET', \
          consoleLogResponseBody: true, \
          url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + "${uuid}" + '\')/$service/cloningInstance?representation=aws_instance.%25details'
          
