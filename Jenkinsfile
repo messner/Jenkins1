@@ -1,10 +1,5 @@
 #!/usr/bin/env groovy
 
-System.properties.putAll([
-    'http.proxyHost':'localhost', 
-    'http.proxyPort':'8888'
-]) 
-
 def slurpJSON(json) {
    //return new groovy.json.JsonSlurper().parseText('{ "name": "John Doe" } /* some comment */');
    return new groovy.json.JsonSlurper().parseText(json);
@@ -13,7 +8,7 @@ def slurpJSON(json) {
 
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 def aws_source = 'CLONE_AWS-JM-TEST1'
-def aws_dest = 'CLONE_AWS-JM-TEST6'
+def aws_dest = 'CLONE_AWS-JM-TEST7'
 def response = httpRequest authentication: "${credId}", \
    contentType: 'APPLICATION_JSON', \
    url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + "${aws_source}" + '\')'
@@ -35,10 +30,9 @@ node {
          def uuid = result.$resources[0].$uuid
          println("UUID: "+uuid)
          
-         
          // Clonse
          httpRequest authentication: "${credId}", \
-         contentType: 'APPLICATION_JSON', \
+         contentType: 'NOT_SET', \
          httpMode: 'POST', \
          consoleLogResponseBody: true, \
          requestBody: '{}', \
