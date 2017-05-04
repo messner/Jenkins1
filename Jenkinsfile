@@ -49,7 +49,7 @@ node {
          httpMode: 'POST', \
          consoleLogResponseBody: true, \
          requestBody: '{}', \
-         url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + "${uuid}" + '\')/$service/deleteInstance?representation=aws_instance.$details&snapshotBeforeDelete=false
+         url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + "${uuid}" + '\')/$service/deleteInstance?representation=aws_instance.$details&snapshotBeforeDelete=false'
          // {$baseUrl}/{$pluralType}('{$key}')/$service/deleteInstance?representation={$representation}.$detai&snapshotBeforeDelete={snapshotBeforeDelete}&trackngId={$trackngId}
       }
    
