@@ -33,6 +33,7 @@ node {
          // Clonse
          httpRequest authentication: "${credId}", \
          contentType: 'NOT_SET', \
+         acceptType: 'TEXT_HTML', \
          httpMode: 'POST', \
          consoleLogResponseBody: true, \
          requestBody: '{}', \
