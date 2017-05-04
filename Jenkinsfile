@@ -7,7 +7,7 @@ def slurpJSON(json) {
 
 
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
-def aws_source = 'AWS-JPGA-TEST4'
+def aws_source = 'CLONE_AWS-JM-TEST3'
 def aws_dest = 'AWS-JM-TEST3'
 def response = httpRequest authentication: "${credId}", \
    contentType: 'APPLICATION_JSON', \
@@ -30,6 +30,7 @@ node {
          def uuid = result.$resources[0].$uuid
          println("UUID: "+uuid)
          
+/*         
          // Clonse
          def response2 = httpRequest authentication: "${credId}", \
          contentType: 'APPLICATION_JSON', \
@@ -40,8 +41,16 @@ node {
          //url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + "${uuid}" + '\')/$service/cloningInstance?representation=aws_instance.$query&newCloneHostName=ip-' + "${aws_dest}" + '&cloneAWSName=CLONE_' + "${aws_dest}" + '&trackngId=4893472b-a79c-4531-bc89-b4dc669e371a&retryId=4828e182803549479e0a7b74637a4fdd'
          //{$baseUrl}/{$pluralType}('{$key}')/$service/cloningInstance?representation={$representation}.$quer&newCloneHostName={newCloneHostName}&cloneAWSName={cloneAWSName}&trackngId={$trackngId}",
          ///sdata/syracuse/collaboration/syracuse/aws_instances('24697533-e199-4dba-8f3e-31a5e41f92d6')/$service/cloningInstance?representation=aws_instance.$query&newCloneHostName=ip-AWS-JM-TEST1&cloneAWSName=CLONE_AWS-JM-TEST1&trackngId=4893472b-a79c-4531-bc89-b4dc669e371a&retryId=4828e182803549479e0a7b74637a4fdd
-         println("Status: "+response2.status)
-         
+         //println("Status: "+response2.status)
+*/         
+         // Delete
+         def response2 = httpRequest authentication: "${credId}", \
+         contentType: 'APPLICATION_JSON', \
+         httpMode: 'POST', \
+         consoleLogResponseBody: true, \
+         requestBody: '{}', \
+         url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + "${uuid}" + '\')/$service/deleteInstance?representation=aws_instance.$details&snapshotBeforeDelete=false
+         // {$baseUrl}/{$pluralType}('{$key}')/$service/deleteInstance?representation={$representation}.$detai&snapshotBeforeDelete={snapshotBeforeDelete}&trackngId={$trackngId}
       }
    
 }
