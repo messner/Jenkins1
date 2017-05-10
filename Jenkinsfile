@@ -33,6 +33,9 @@ node {
    
    println("${jm_global}")
    println("${jm_local}")
+   println(jm_local)
+   println("Wert von jm_local: " + jm_local)
+   
 
       /*
       String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
