@@ -32,7 +32,7 @@ node {
       String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
       String aws_source = 'CLONE_AWS-JM-TEST1'
       String aws_dest = 'AWS-JM-TEST2'
-      String response = httpRequest authentication: "${credId}", \
+      def response = httpRequest authentication: "${credId}", \
          contentType: 'APPLICATION_JSON', \
          validResponseCodes: '100:599', \
          consoleLogResponseBody: true, \
