@@ -29,10 +29,10 @@ node {
    stage 'Stage 3' 
       echo 'Stage 3'
    
-      def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
-      def aws_source = 'CLONE_AWS-JM-TEST1'
-      def aws_dest = 'AWS-JM-TEST2'
-      def response = httpRequest authentication: "${credId}", \
+      String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
+      String aws_source = 'CLONE_AWS-JM-TEST1'
+      String aws_dest = 'AWS-JM-TEST2'
+      String response = httpRequest authentication: "${credId}", \
          contentType: 'APPLICATION_JSON', \
          validResponseCodes: '100:599', \
          consoleLogResponseBody: true, \
@@ -41,7 +41,7 @@ node {
    println("Status: "+response.status)
       if (response.status == 200) {
          def result = slurpJSON(response.content)
-         def uuid = result.$resources[0].$uuid
+         String uuid = result.$resources[0].$uuid
          println("UUID: "+uuid)
          
          
