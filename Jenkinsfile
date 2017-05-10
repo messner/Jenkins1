@@ -5,6 +5,10 @@ def slurpJSON(json) {
    return new groovy.json.JsonSlurper().parseText(json);
 }
 
+def my_add(val1 , val2) {
+   return val1 + val2
+}
+
 /*
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 def aws_source = 'CLONE_AWS-JM-TEST1'
@@ -35,6 +39,8 @@ node {
    println("${jm_local}")
    println(jm_local)
    println("Wert von jm_local: " + jm_local)
+   def erg = my_add(3, 5)
+   println("Wert von 3+5: " + erg)
    
 
       /*
