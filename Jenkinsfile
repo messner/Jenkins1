@@ -34,7 +34,7 @@ node {
          // Clonse
          httpRequest authentication: "${credId}", \
          timeout: 90, \
-         validResponseCodes: '500'
+         validResponseCodes: '500', \
          contentType: 'NOT_SET', \
          acceptType: 'TEXT_HTML', \
          httpMode: 'PUT', \
