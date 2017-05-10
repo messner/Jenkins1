@@ -5,10 +5,6 @@ def slurpJSON(json) {
    return new groovy.json.JsonSlurper().parseText(json);
 }
 
-def my_add(val1 , val2) {
-   return val1 + val2
-}
-
 /*
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 def aws_source = 'CLONE_AWS-JM-TEST1'
@@ -23,10 +19,8 @@ println("Status: "+response.status)
 
 //println("Content: "+response.content)
 //println("UUID: "+response.content.$resources[0].$uuid)
-def jm_global = "globale value"
 
 node {
-   def jm_local = "local value node 1"
    stage 'Stage 1' 
    		echo 'Hello World 1'
    stage 'Stage 2' 
@@ -35,25 +29,20 @@ node {
    stage 'Stage 3'
       echo 'Stage 3'
    
-   println("${jm_global}")
-   println("${jm_local}")
-   println(jm_local)
-   println("Wert von jm_local: " + jm_local)
-   def erg = my_add(3, 5)
-   println("Wert von 3+5: " + erg)
-   
 
-      /*
+      
       String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
       String aws_source = 'CLONE_AWS-JM-TEST1'
       String aws_dest = 'AWS-JM-TEST2'
-      def response = httpRequest authentication: "${credId}", \
+      def response = httpRequest authentication: credId, \
          contentType: 'APPLICATION_JSON', \
          validResponseCodes: '100:599', \
          consoleLogResponseBody: true, \
-         url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + "${aws_source}" + '\')'
+         url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + aws_source + '\')'
 
-   println("Status: "+response.status)
+   println("Status: " + response.status)
+      
+   /*
       if (response.status == 200) {
          def result = slurpJSON(response.content)
          String uuid = result.$resources[0].$uuid
@@ -90,20 +79,4 @@ node {
          */
       //}
       
-}
-
-node {
-   def jm_local = "local value node 2"
-   stage 'node 2 Stage 1'
-   def jm3 = "value jm3"
-   		echo 'Hello World 1'
-      println("${jm_global}")
-   println("${jm_local}")
-
-   stage 'node 2 Stage 2'
-   		def jm = "test"
-         echo jm
-   stage 'Stage 3' 
-      echo 'Stage 3'
-      println("${jm3}")
 }
