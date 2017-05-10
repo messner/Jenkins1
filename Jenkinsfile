@@ -19,8 +19,10 @@ println("Status: "+response.status)
 
 //println("Content: "+response.content)
 //println("UUID: "+response.content.$resources[0].$uuid)
+def jm_global = "globale value"
 
 node {
+   def jm_local = "local value"
    stage 'Stage 1'
    		echo 'Hello World 1'
    stage 'Stage 2'
@@ -29,6 +31,10 @@ node {
    stage 'Stage 3' 
       echo 'Stage 3'
    
+   println("${jm_global}")
+   println("${jm_local}")
+   
+   /*
       String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
       String aws_source = 'CLONE_AWS-JM-TEST1'
       String aws_dest = 'AWS-JM-TEST2'
@@ -61,6 +67,7 @@ node {
          ///sdata/syracuse/collaboration/syracuse/aws_instances('24697533-e199-4dba-8f3e-31a5e41f92d6')/$service/cloningInstance?representation=aws_instance.$query&newCloneHostName=ip-AWS-JM-TEST1&cloneAWSName=CLONE_AWS-JM-TEST1&trackngId=4893472b-a79c-4531-bc89-b4dc669e371a&retryId=4828e182803549479e0a7b74637a4fdd
          //println("Status: "+response2.status)
          //requestBody: '{}', \         
+         */
          
          /*
          // Delete
@@ -72,6 +79,17 @@ node {
          url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + "${uuid}" + '\')/$service/deleteInstance?representation=aws_instance.$details&snapshotBeforeDelete=false'
          // {$baseUrl}/{$pluralType}('{$key}')/$service/deleteInstance?representation={$representation}.$detai&snapshotBeforeDelete={snapshotBeforeDelete}&trackngId={$trackngId}
          */
-      }
-   
+      }  
 }
+
+node {
+   stage 'node 2 Stage 1'
+   		echo 'Hello World 1'
+      println("${jm_global}")
+   println("${jm_local}")
+
+   stage 'node 2 Stage 2'
+   		def jm = "test"
+         echo jm
+   stage 'Stage 3' 
+      echo 'Stage 3'
