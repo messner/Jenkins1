@@ -6,12 +6,11 @@ def slurpJSON(json) {
 }
 
 
-def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
-def aws_source = 'CLONE_AWS-JMX-TEST1'
+def credId = 'x1dc551f1-a2cb-4965-9bee-346302f60433'
+def aws_source = 'CLONE_AWS-JM-TEST1'
 def aws_dest = 'AWS-JM-TEST2'
 def response = httpRequest authentication: "${credId}", \
    contentType: 'APPLICATION_JSON', \
-   validResponseCodes: '100:599', \
    consoleLogResponseBody: true, \
    url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + "${aws_source}" + '\')'
 println("Status: "+response.status)
@@ -36,7 +35,7 @@ node {
          // Clonse
          httpRequest authentication: "${credId}", \
          timeout: 90, \
-         validResponseCodes: '500', \
+         validResponseCodes: '100:599', \
          contentType: 'NOT_SET', \
          acceptType: 'TEXT_HTML', \
          httpMode: 'PUT', \
