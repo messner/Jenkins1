@@ -11,6 +11,7 @@ def aws_source = 'CLONE_AWS-JM-TEST1'
 def aws_dest = 'CLONE_AWS-JM-TEST7'
 def response = httpRequest authentication: "${credId}", \
    contentType: 'APPLICATION_JSON', \
+   consoleLogResponseBody: true, \
    url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + "${aws_source}" + '\')'
 println("Status: "+response.status)
 
