@@ -1,7 +1,6 @@
 #!/usr/bin/env groovy
 
 def slurpJSON(json) {
-   //return new groovy.json.JsonSlurper().parseText('{ "name": "John Doe" } /* some comment */');
    return new groovy.json.JsonSlurper().parseText(json);
 }
 
@@ -28,9 +27,9 @@ node {
          echo jm
    stage 'Stage 3'
       echo 'Stage 3'
-   
+   input 'Ready to go?'
 
-      
+/*      
       String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
       String aws_source = 'CLONE_AWS-JM-TEST1'
       String aws_dest = 'AWS-JM-TEST2'
@@ -40,7 +39,8 @@ node {
          consoleLogResponseBody: true, \
          url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + aws_source + '\')'
 
-   println("Status: " + response.status)
+      println("Status: " + response.status)
+  */
       
    /*
       if (response.status == 200) {
