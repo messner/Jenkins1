@@ -22,7 +22,7 @@ println("Status: "+response.status)
 def jm_global = "globale value"
 
 node {
-   def jm_local = "local value"
+   def jm_local = "local value node 1"
    stage 'Stage 1'
    		echo 'Hello World 1'
    stage 'Stage 2'
@@ -84,7 +84,9 @@ node {
 }
 
 node {
+   def jm_local = "local value node 2"
    stage 'node 2 Stage 1'
+   def jm3 = "value jm3"
    		echo 'Hello World 1'
       println("${jm_global}")
    println("${jm_local}")
@@ -94,4 +96,5 @@ node {
          echo jm
    stage 'Stage 3' 
       echo 'Stage 3'
+      println("${jm3}")
 }
