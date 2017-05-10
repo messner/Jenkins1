@@ -36,6 +36,7 @@ node {
          contentType: 'NOT_SET', \
          acceptType: 'TEXT_HTML', \
          httpMode: 'GET', \
+         timeout: 90, \
          consoleLogResponseBody: true, \
          url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + "${uuid}" + '\')/$service/cloningInstance?representation=aws_instance.%25details&newCloneHostName=ip-' + "${aws_dest}" + '&cloneAWSName=' + "${aws_dest}"
          //url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + "${uuid}" + '\')/$service/cloningInstance?representation=aws_instance.$query&newCloneHostName=ip-' + "${aws_dest}" + '&cloneAWSName=CLONE_' + "${aws_dest}" + '&trackngId=4893472b-a79c-4531-bc89-b4dc669e371a&retryId=4828e182803549479e0a7b74637a4fdd'
