@@ -8,7 +8,7 @@ def slurpJSON(json) {
 
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 def aws_source = 'CLONE_AWS-JM-TEST1'
-def aws_dest = 'CLONE_AWS-JM-TEST7'
+def aws_dest = 'AWS-JM-TEST2'
 def response = httpRequest authentication: "${credId}", \
    contentType: 'APPLICATION_JSON', \
    consoleLogResponseBody: true, \
