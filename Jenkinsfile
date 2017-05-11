@@ -87,6 +87,7 @@ node {
 String getUuidByName(name) {   
    String uuid = ""
    
+   /*
    def response = httpRequest authentication: credId, \
       contentType: 'APPLICATION_JSON', \
       validResponseCodes: '100:599', \
@@ -100,6 +101,8 @@ String getUuidByName(name) {
    }
    
    response = null
+   */
+   println("SSSource " + aws_source)
    return uuid
 }
 
