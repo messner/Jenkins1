@@ -83,30 +83,31 @@ node {
          */
       //}
       
-}
+   // Check, if AWS instance (already) exists and returns UUID if exists
+   String getUuidByName(name) {   
+      String uuid = ""
 
-// Check, if AWS instance (already) exists and returns UUID if exists
-String getUuidByName(name) {   
-   String uuid = ""
-   
-   /*
-   def response = httpRequest authentication: credId, \
-      contentType: 'APPLICATION_JSON', \
-      validResponseCodes: '100:599', \
-      consoleLogResponseBody: true, \
-      url: aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + name + '\')'
+      /*
+      def response = httpRequest authentication: credId, \
+         contentType: 'APPLICATION_JSON', \
+         validResponseCodes: '100:599', \
+         consoleLogResponseBody: true, \
+         url: aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + name + '\')'
 
-   if (response.status == 200) {
-      def result = slurpJSON(response.content)
-      uuid = result.$resources[0].$uuid
-      result = null
+      if (response.status == 200) {
+         def result = slurpJSON(response.content)
+         uuid = result.$resources[0].$uuid
+         result = null
+      }
+
+      response = null
+      */
+      println("Source in function " + aws_source)
+      return uuid
    }
-   
-   response = null
-   */
-   println("Source in function " + aws_source)
-   return uuid
+
 }
+
 
 @NonCPS
 def slurpJSON(json) {
