@@ -95,7 +95,7 @@ String getUuidByName(name) {
 
    if (response.status == 200) {
       def result = slurpJSON(response.content)
-      String uuid = result.$resources[0].$uuid
+      uuid = result.$resources[0].$uuid
       result = null
    }
    
