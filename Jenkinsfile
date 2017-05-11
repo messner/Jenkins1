@@ -29,6 +29,8 @@ node {
    stage 'Stage 3'
       echo 'Stage 3'
 
+      println("Source in node " + aws_source)
+
       println("Source >" + getUuidByName(aws_source) + "<")
       println("Dest   >" + getUuidByName(aws_dest) + "<")
    
@@ -102,7 +104,7 @@ String getUuidByName(name) {
    
    response = null
    */
-   println("SSSource " + aws_source)
+   println("Source in function " + aws_source)
    return uuid
 }
 
