@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 
-@NonCPS
-def slurpJSON(json) {
-   return new groovy.json.JsonSlurper().parseText(json);
-}
+String aws_host = "http://10.169.140.65:8144"
+String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
+String aws_source = 'CLONE_AWS-JM-TEST1'
+String aws_dest = 'AWS-JM-TEST2'
 
 /*
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
@@ -29,10 +29,10 @@ node {
    stage 'Stage 3'
       echo 'Stage 3'
 
-      
-      String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
-      String aws_source = 'CLONE_AWS-JM-TEST1'
-      String aws_dest = 'AWS-JM-TEST2'
+      println("Source >" + getUuidByName(aws_source) + "<")
+      println("Dest   >" + getUuidByName(aws_dest) + "<")
+   
+      /*
       def response = httpRequest authentication: credId, \
          contentType: 'APPLICATION_JSON', \
          validResponseCodes: '100:599', \
@@ -79,6 +79,31 @@ node {
          url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + "${uuid}" + '\')/$service/deleteInstance?representation=aws_instance.$details&snapshotBeforeDelete=false'
          // {$baseUrl}/{$pluralType}('{$key}')/$service/deleteInstance?representation={$representation}.$detai&snapshotBeforeDelete={snapshotBeforeDelete}&trackngId={$trackngId}
          */
-      }
+      //}
       
+}
+
+// Check, if AWS instance (already) exists and returns UUID if exists
+String getUuidByName(name) {   
+   String uuid = ""
+   
+   def response = httpRequest authentication: credId, \
+      contentType: 'APPLICATION_JSON', \
+      validResponseCodes: '100:599', \
+      consoleLogResponseBody: true, \
+      url: aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + name + '\')'
+
+   if (response.status == 200) {
+      def result = slurpJSON(response.content)
+      String uuid = result.$resources[0].$uuid
+      result = null
+   }
+   
+   response = null
+   return uuid
+}
+
+@NonCPS
+def slurpJSON(json) {
+   return new groovy.json.JsonSlurper().parseText(json);
 }
