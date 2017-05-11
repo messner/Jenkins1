@@ -2,8 +2,8 @@
 
 String aws_host = "http://10.169.140.65:8144"
 String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
-String aws_source = 'AWS-JPGA-TEST1'
-String aws_dest = 'AWS-JM-TEST1'
+String aws_source = 'AWS-JM-TEST1'
+String aws_dest = 'AWS-JM-TEST2'
 
 /*
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
@@ -59,7 +59,7 @@ node {
          validResponseCodes: '100:599', \
          contentType: 'NOT_SET', \
          acceptType: 'TEXT_HTML', \
-         httpMode: 'PUT', \
+         httpMode: 'POST', \
          consoleLogResponseBody: true, \
          url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + uuid +  \
             '\')/$service/cloningInstance?representation=aws_instance.%25details&newCloneHostName=ip-' + aws_dest + \
