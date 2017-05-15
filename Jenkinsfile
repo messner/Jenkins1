@@ -8,6 +8,7 @@ class Globals {
    static String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
    static String aws_source = 'AWS-JM-TEST1'
    static String aws_dest = 'AWS-JM-TEST4'
+   static String aws_alternative = 'AWS-JM-TEST5'
 }
 
 /*
@@ -36,8 +37,31 @@ node {
 
       //println("Source in node " + aws_source)
 
-      println("Source >" + getUuidByName(Globals.aws_source) + "<")
-      println("Dest   >" + getUuidByName(Globals.aws_dest) + "<")
+      //println("Source >" + getUuidByName(Globals.aws_source) + "<")
+      //println("Dest   >" + getUuidByName(Globals.aws_dest) + "<")
+   
+   String aws_clone = ""
+   String uuid = getUuidByName(Globals.aws_source)
+   if (uuid != "") {
+      uuid = Globals.aws_dest
+      // check, if destination already exists
+      if (getUuidByName(uuid) != "") {
+         dropInstance(uuid)
+         aws_clone = Globals.alternative
+         uuid = getUuidByName(uuid)
+         if (uuid != "") {
+            dropInstance(uuid)
+            aws_clone = ""
+            println(Globals.aws_dest + " and " + Globals.alternative + " exists! Can't clone")
+         }
+      }
+      else {
+         aws_clone = Globals.aws_dest
+      }
+      if (aws_clone != "") {
+         cloneInstance(aws_clone)
+      }
+   }
    
       /*
       def response = httpRequest authentication: credId, \
@@ -97,27 +121,36 @@ def slurpJSON(json) {
    return new groovy.json.JsonSlurper().parseText(json);
 }
 
-   // Check, if AWS instance (already) exists and returns UUID if exists
-   String getUuidByName(name) {   
-      String uuid = ""
+// Check, if AWS instance (already) exists and returns UUID if exists
+String getUuidByName(name) {   
+   String uuid = ""
 
-      def response = httpRequest authentication: Globals.credId, \
-         contentType: 'APPLICATION_JSON', \
-         validResponseCodes: '100:599', \
-         consoleLogResponseBody: true, \
-         url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + name + '\')'
+   def response = httpRequest authentication: Globals.credId, \
+      contentType: 'APPLICATION_JSON', \
+      validResponseCodes: '100:599', \
+      consoleLogResponseBody: true, \
+      url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + name + '\')'
 
-      if (response.status == 200) {
-         def result = slurpJSON(response.content)
-         //Integer totalResults = slurpJSON(response.content)
-         if (result.$totalResults > 0) {
-            uuid = result.$resources[0].$uuid
-         }
-         result = null
+   if (response.status == 200) {
+      def result = slurpJSON(response.content)
+      //Integer totalResults = slurpJSON(response.content)
+      if (result.$totalResults > 0) {
+         uuid = result.$resources[0].$uuid
       }
-
-      response = null
-      
-      println("Source in function " + Globals.aws_source)
-      return uuid
+      result = null
    }
+
+   response = null
+
+   println("Source in function " + Globals.aws_source)
+   return uuid
+}
+
+Boolean dropInstance(uuid) {
+   Boolean success = false
+   
+   return success
+}
+
+def cloneInstance()
+
