@@ -1,16 +1,16 @@
 #!/usr/bin/env groovy
 //import groovy.transform.Field
 
-/*
+
 @Field String aws_host = "http://10.169.140.65:8144"
 @Field String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 @Field String aws_source = 'AWS-JM-TEST1'
 @Field String aws_dest = 'AWS-JM-TEST3'
-*/
-static String aws_host = "http://10.169.140.65:8144"
-static String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
-static String aws_source = 'AWS-JM-TEST1'
-static String aws_dest = 'AWS-JM-TEST3'
+
+class Globals {
+   static String jm1 = "jm1jm1"
+   static String jm2 = "jm2jm2"
+}
 
 /*
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
@@ -38,8 +38,9 @@ node {
 
       //println("Source in node " + aws_source)
 
-      println("Source >" + getUuidByName(aws_source) + "<")
-      println("Dest   >" + getUuidByName(aws_dest) + "<")
+      //println("Source >" + getUuidByName(aws_source) + "<")
+      //println("Dest   >" + getUuidByName(aws_dest) + "<")
+      println("Dest   >" + getUuidByName(Globals.jm1) + "<")
    
       
       def response = httpRequest authentication: credId, \
@@ -103,6 +104,7 @@ def slurpJSON(json) {
    String getUuidByName(name) {   
       String uuid = ""
 
+      /*
       
       def response = httpRequest authentication: credId, \
          contentType: 'APPLICATION_JSON', \
@@ -117,7 +119,9 @@ def slurpJSON(json) {
       }
 
       response = null
+      */
       
       println("Source in function " + aws_source)
+      uuid = globals.jm2
       return uuid
    }
