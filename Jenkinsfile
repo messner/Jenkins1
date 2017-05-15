@@ -122,6 +122,6 @@ def slurpJSON(json) {
       */
       
       println("Source in function " + aws_source)
-      uuid = globals.jm2
+      uuid = Globals.jm2
       return uuid
    }
