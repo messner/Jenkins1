@@ -1,10 +1,10 @@
 #!/usr/bin/env groovy
 import groovy.transform.Field
 
-String aws_host = "http://10.169.140.65:8144"
-String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
+@Field String aws_host = "http://10.169.140.65:8144"
+@Field String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 @Field String aws_source = 'AWS-JM-TEST1'
-String aws_dest = 'AWS-JM-TEST3'
+@Field String aws_dest = 'AWS-JM-TEST3'
 
 /*
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
@@ -33,7 +33,7 @@ node {
       //println("Source in node " + aws_source)
 
       println("Source >" + getUuidByName(aws_source) + "<")
-      //println("Dest   >" + getUuidByName(aws_dest) + "<")
+      println("Dest   >" + getUuidByName(aws_dest) + "<")
    
       
       def response = httpRequest authentication: credId, \
@@ -95,9 +95,9 @@ def slurpJSON(json) {
 
    // Check, if AWS instance (already) exists and returns UUID if exists
    String getUuidByName(name) {   
-      String uuid = "hahaha"
+      String uuid = ""
 
-      /*
+      
       def response = httpRequest authentication: credId, \
          contentType: 'APPLICATION_JSON', \
          validResponseCodes: '100:599', \
@@ -111,7 +111,7 @@ def slurpJSON(json) {
       }
 
       response = null
-      */
+      
       println("Source in function " + aws_source)
       return uuid
    }
