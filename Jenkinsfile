@@ -2,7 +2,7 @@
 
 String aws_host = "http://10.169.140.65:8144"
 String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
-String aws_source = 'AWS-JM-TEST1'
+@Field String aws_source = 'AWS-JM-TEST1'
 String aws_dest = 'AWS-JM-TEST3'
 
 /*
@@ -93,7 +93,7 @@ def slurpJSON(json) {
 }
 
    // Check, if AWS instance (already) exists and returns UUID if exists
-   def getUuidByName(name) {   
+   String getUuidByName(name) {   
       String uuid = "hahaha"
 
       /*
