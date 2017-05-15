@@ -107,7 +107,7 @@ def slurpJSON(json) {
          consoleLogResponseBody: true, \
          url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + name + '\')'
 
-      if (response.status == 200) {
+      if (response.status == 200 && response && response.content) {
          def result = slurpJSON(response.content)
          uuid = result.$resources[0].$uuid
          result = null
