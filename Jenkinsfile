@@ -2,14 +2,12 @@
 import groovy.transform.Field
 
 
-@Field String aws_host = "http://10.169.140.65:8144"
-@Field String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
-@Field String aws_source = 'AWS-JM-TEST1'
-@Field String aws_dest = 'AWS-JM-TEST3'
 
 class Globals {
-   static String jm1 = "jm1jm1"
-   static String jm2 = "jm2jm2"
+   static String aws_host = "http://10.169.140.65:8144"
+   static String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
+   static String aws_source = 'AWS-JM-TEST1'
+   static String aws_dest = 'AWS-JM-TEST3'
 }
 
 /*
@@ -38,11 +36,10 @@ node {
 
       //println("Source in node " + aws_source)
 
-      //println("Source >" + getUuidByName(aws_source) + "<")
-      //println("Dest   >" + getUuidByName(aws_dest) + "<")
-      println("Dest   >" + getUuidByName(Globals.jm1) + "<")
+      println("Source >" + getUuidByName(Globals.aws_source) + "<")
+      println("Dest   >" + getUuidByName(Globals.aws_dest) + "<")
    
-      
+      /*
       def response = httpRequest authentication: credId, \
          contentType: 'APPLICATION_JSON', \
          validResponseCodes: '100:599', \
@@ -89,7 +86,7 @@ node {
          url: 'http://10.169.140.65:8144/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + "${uuid}" + '\')/$service/deleteInstance?representation=aws_instance.$details&snapshotBeforeDelete=false'
          // {$baseUrl}/{$pluralType}('{$key}')/$service/deleteInstance?representation={$representation}.$detai&snapshotBeforeDelete={snapshotBeforeDelete}&trackngId={$trackngId}
          */
-      }
+      //}
       
 
 }
@@ -104,13 +101,11 @@ def slurpJSON(json) {
    String getUuidByName(name) {   
       String uuid = ""
 
-      /*
-      
-      def response = httpRequest authentication: credId, \
+      def response = httpRequest authentication: Globals.credId, \
          contentType: 'APPLICATION_JSON', \
          validResponseCodes: '100:599', \
          consoleLogResponseBody: true, \
-         url: aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + name + '\')'
+         url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances?representation=aws_instance.$query&where=(name%20eq%20\'' + name + '\')'
 
       if (response.status == 200) {
          def result = slurpJSON(response.content)
@@ -119,9 +114,7 @@ def slurpJSON(json) {
       }
 
       response = null
-      */
       
       println("Source in function " + aws_source)
-      uuid = Globals.jm2
       return uuid
    }
