@@ -115,6 +115,6 @@ def slurpJSON(json) {
 
       response = null
       
-      println("Source in function " + aws_source)
+      println("Source in function " + Globals.aws_source)
       return uuid
    }
