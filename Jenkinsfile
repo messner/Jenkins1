@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-//import groovy.transform.Field
+import groovy.transform.Field
 
 
 @Field String aws_host = "http://10.169.140.65:8144"
