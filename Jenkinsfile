@@ -1,10 +1,16 @@
 #!/usr/bin/env groovy
-import groovy.transform.Field
+//import groovy.transform.Field
 
+/*
 @Field String aws_host = "http://10.169.140.65:8144"
 @Field String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
 @Field String aws_source = 'AWS-JM-TEST1'
 @Field String aws_dest = 'AWS-JM-TEST3'
+*/
+static String aws_host = "http://10.169.140.65:8144"
+static String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
+static String aws_source = 'AWS-JM-TEST1'
+static String aws_dest = 'AWS-JM-TEST3'
 
 /*
 def credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
