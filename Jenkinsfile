@@ -1,4 +1,5 @@
 #!/usr/bin/env groovy
+import groovy.transform.Field
 
 String aws_host = "http://10.169.140.65:8144"
 String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
