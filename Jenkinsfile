@@ -7,8 +7,8 @@ class Globals {
    static String aws_host = "http://10.169.140.65:8144"
    static String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
    static String aws_source = 'AWS-JM-TEST1'
-   static String aws_dest = 'AWS-JM-TEST4'
-   static String aws_alternative = 'AWS-JM-TEST5'
+   static String aws_dest = 'AWS-JM-TEST5'
+   static String aws_alternative = 'AWS-JM-TEST6'
 }
 
 /*
