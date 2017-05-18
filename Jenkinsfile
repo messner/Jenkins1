@@ -53,6 +53,8 @@ node {
             dropInstance(uuid)
             aws_clone = ""
             println(Globals.aws_dest + " and " + Globals.alternative + " exists! Can't clone")
+         } else {
+            
          }
       }
       else {
@@ -146,11 +148,35 @@ String getUuidByName(name) {
    return uuid
 }
 
+@NonCPS
 Boolean dropInstance(uuid) {
    Boolean success = false
    
+   def response = httpRequest authentication: Globals.credId, \
+   contentType: 'APPLICATION_JSON', \
+   httpMode: 'POST', \
+   consoleLogResponseBody: true, \
+   requestBody: '{}', \
+   url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + uuid + \
+      '\')/$service/deleteInstance?representation=aws_instance.$details&snapshotBeforeDelete=false'
+   // {$baseUrl}/{$pluralType}('{$key}')/$service/deleteInstance?representation={$representation}.$detai&snapshotBeforeDelete={snapshotBeforeDelete}&trackngId={$trackngId}
    return success
 }
 
-def cloneInstance()
+@NonCPS
+def cloneInstance(name) {
+   // Clonse
+   def response = httpRequest authentication: Globals.credId, \
+   timeout: 90000, \
+   validResponseCodes: '100:599', \
+   contentType: 'NOT_SET', \
+   acceptType: 'TEXT_HTML', \
+   httpMode: 'POST', \
+   consoleLogResponseBody: true, \
+   url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + Globals.uuid +  \
+      '\')/$service/cloningInstance?representation=aws_instance.%25details&newCloneHostName=ip-' + name + \
+      '&cloneAWSName=' + name
+   
+   return response
+}
 
