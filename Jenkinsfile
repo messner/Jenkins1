@@ -39,9 +39,8 @@ node {
    String aws_clone = ""
    String uuid = getUuidByName(Globals.aws_source)
    if (uuid != "") {
-      uuid = Globals.aws_dest
       // check, if destination already exists
-      if (getUuidByName(uuid) != "") {
+      if (getUuidByName(Globals.aws_dest) != "") {
          println("destination exists -> drop")
          dropInstance(uuid)
          aws_clone = Globals.alternative
@@ -58,7 +57,7 @@ node {
          aws_clone = Globals.aws_dest
       }
       if (aws_clone != "") {
-         cloneInstance(aws_clone)
+         cloneInstance(uuid , aws_clone)
       }
    }
    
@@ -162,7 +161,7 @@ Boolean dropInstance(uuid) {
 }
 
 @NonCPS
-def cloneInstance(name) {
+def cloneInstance(uuid, name) {
    // Clonse
    def response = httpRequest authentication: Globals.credId, \
    timeout: 90000, \
@@ -171,7 +170,7 @@ def cloneInstance(name) {
    acceptType: 'TEXT_HTML', \
    httpMode: 'POST', \
    consoleLogResponseBody: true, \
-   url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + Globals.uuid +  \
+   url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + uuid +  \
       '\')/$service/cloningInstance?representation=aws_instance.%25details&newCloneHostName=ip-' + name + \
       '&cloneAWSName=' + name
    
