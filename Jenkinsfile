@@ -35,10 +35,6 @@ node {
    stage 'Stage 3'
       echo 'Stage 3'
 
-      //println("Source in node " + aws_source)
-
-      //println("Source >" + getUuidByName(Globals.aws_source) + "<")
-      //println("Dest   >" + getUuidByName(Globals.aws_dest) + "<")
    
    String aws_clone = ""
    String uuid = getUuidByName(Globals.aws_source)
@@ -46,6 +42,7 @@ node {
       uuid = Globals.aws_dest
       // check, if destination already exists
       if (getUuidByName(uuid) != "") {
+         println("destination exists -> drop")
          dropInstance(uuid)
          aws_clone = Globals.alternative
          uuid = getUuidByName(uuid)
