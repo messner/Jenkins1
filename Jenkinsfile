@@ -141,12 +141,13 @@ String getUuidByName(name) {
 
    response = null
 
-   println("Source in function " + Globals.aws_source + " - uuid: " + uuid)
+   println("Source in function " + Globals.aws_source + " - uuid: >" + uuid + "<")
    return uuid
 }
 
 @NonCPS
 Boolean dropInstance(uuid) {
+   println("dropInstance with " + uuid)
    Boolean success = false
    
    def response = httpRequest authentication: Globals.credId, \
