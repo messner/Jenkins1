@@ -42,7 +42,9 @@ node {
       // check, if destination already exists
       if (getUuidByName(Globals.aws_dest) != "") {
          // Start instance (for test)
-         startInstance(uuid)
+         //startInstance(uuid)
+         // Stop instance (for test)
+         stopInstance(uuid)
          /*
          println("destination exists -> drop")
          dropInstance(uuid)
@@ -177,6 +179,21 @@ Boolean startInstance(uuid) {
    url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + uuid + \
       '\')/$service/start?representation=aws_instance.$details'
    // {$baseUrl}/{$pluralType}('{$key}')/$service/start?representation={$representation}.$detai&trackngId={$trackngId}
+   return success
+}
+@NonCPS
+Boolean stopInstance(uuid) {
+   println("stopInstance with " + uuid)
+   Boolean success = false
+   
+   def response = httpRequest authentication: Globals.credId, \
+   contentType: 'APPLICATION_JSON', \
+   httpMode: 'POST', \
+   consoleLogResponseBody: true, \
+   requestBody: '{}', \
+   url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + uuid + \
+      '\')/$service/stop?representation=aws_instance.$details'
+   // {$baseUrl}/{$pluralType}('{$key}')/$service/stop?representation={$representation}.$detai&trackngId={$trackngId}
    return success
 }
 
