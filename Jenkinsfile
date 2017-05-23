@@ -185,6 +185,8 @@ Boolean startInstance(uuid) {
 
    if (response.status != 200) {
       sucess = false
+      def result = slurpJSON(response.content)
+      println(result.$diagnoses)
    }
    return success
 }
