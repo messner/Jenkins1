@@ -41,7 +41,7 @@ node {
    if (uuid != "") {
       // check, if destination already exists
       // Start instance (for test)
-      startInstance(uuid)
+      startInstance(uuid + "XX")
       // Stop instance (for test)
       //stopInstance(uuid)
 
@@ -168,10 +168,8 @@ Boolean dropInstance(uuid) {
    return success
 }
 
-//@NonCPS
 Boolean startInstance(uuid) {
    println("startInstance with " + uuid)
-   println("x2x2x2")
    Boolean success = false
    
    //consoleLogResponseBody: true, \
