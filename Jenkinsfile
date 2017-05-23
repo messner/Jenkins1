@@ -183,6 +183,7 @@ Boolean startInstance(uuid) {
       '\')/$service/start?representation=aws_instance.$details'
    // {$baseUrl}/{$pluralType}('{$key}')/$service/start?representation={$representation}.$detai&trackngId={$trackngId}
 
+   println("response: " + response)
    println("response.status: " + response.status)
    if (response.status != 200) {
       sucess = false
