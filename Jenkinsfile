@@ -41,7 +41,7 @@ node {
    if (uuid != "") {
       // check, if destination already exists
       // Start instance (for test)
-      startInstance(uuid + "XX")
+      startInstance(uuid)
       // Stop instance (for test)
       //stopInstance(uuid)
 
