@@ -182,17 +182,12 @@ Boolean startInstance(uuid) {
       '\')/$service/start?representation=aws_instance.$details'
    // {$baseUrl}/{$pluralType}('{$key}')/$service/start?representation={$representation}.$detai&trackngId={$trackngId}
 
-   println("x3x3x3")
-   println("XXXXXXXXXXXXXXXXXXXXXXXXx")
-   println("response: " + response)
-   println("response.status: " + response.status)
    if (response.status != 200) {
       sucess = false
       def result = slurpJSON(response.content)
-      println("result: " + result)
-      println("result.Dollardiagnoses: " + result.$diagnoses)
+      println(result.$diagnoses)
    }
-   println("x4x4x4")
+   println("return: " + success)
    return success
 }
 @NonCPS
