@@ -177,7 +177,7 @@ Boolean startInstance(uuid) {
    contentType: 'APPLICATION_JSON', \
    validResponseCodes: '100:599', \
    httpMode: 'POST', \
-   consoleLogResponseBody: true, \
+   //consoleLogResponseBody: true, \
    requestBody: '{}', \
    url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + uuid + \
       '\')/$service/start?representation=aws_instance.$details'
