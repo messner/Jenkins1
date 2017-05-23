@@ -188,7 +188,7 @@ Boolean startInstance(uuid) {
       sucess = false
       def result = slurpJSON(response.content)
       println("result: " + result)
-      println("result.$diagnoses: + "result.$diagnoses)
+      println("result.$diagnoses: " + result.$diagnoses)
    }
    return success
 }
