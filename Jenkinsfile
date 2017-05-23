@@ -186,8 +186,9 @@ Boolean startInstance(uuid) {
       sucess = false
       def result = slurpJSON(response.content)
       println(result.$diagnoses)
+      result = null
    }
-   println("return: " + success)
+   response = null
    return success
 }
 @NonCPS
