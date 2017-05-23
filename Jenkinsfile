@@ -198,7 +198,7 @@ Boolean stopInstance(uuid) {
       '\')/$service/stop?representation=aws_instance.$details'
    // {$baseUrl}/{$pluralType}('{$key}')/$service/stop?representation={$representation}.$detai&trackngId={$trackngId}
    
-   if response.status != 200 {
+   if (response.status) != 200 {
       sucess = false
    }
    
