@@ -42,9 +42,9 @@ node {
       // check, if destination already exists
       if (getUuidByName(Globals.aws_dest) != "") {
          // Start instance (for test)
-         //startInstance(uuid)
+         startInstance(uuid)
          // Stop instance (for test)
-         stopInstance(uuid)
+         //stopInstance(uuid)
          /*
          println("destination exists -> drop")
          dropInstance(uuid)
