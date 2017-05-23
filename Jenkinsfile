@@ -40,12 +40,14 @@ node {
    String uuid = getUuidByName(Globals.aws_source)
    if (uuid != "") {
       // check, if destination already exists
+      // Start instance (for test)
+      startInstance(uuid + 'XX')
+      // Stop instance (for test)
+      //stopInstance(uuid)
+
+      /*
       if (getUuidByName(Globals.aws_dest) != "") {
-         // Start instance (for test)
-         startInstance(uuid + 'XX')
-         // Stop instance (for test)
-         //stopInstance(uuid)
-         /*
+         
          println("destination exists -> drop")
          dropInstance(uuid)
          aws_clone = Globals.alternative
@@ -57,14 +59,14 @@ node {
          } else {
             
          }
-         */
       }
       else {
          aws_clone = Globals.aws_dest
       }
       if (aws_clone != "") {
-         //cloneInstance(uuid , aws_clone)
+         cloneInstance(uuid , aws_clone)
       }
+      */
    }
    
       /*
@@ -188,12 +190,18 @@ Boolean stopInstance(uuid) {
    
    def response = httpRequest authentication: Globals.credId, \
    contentType: 'APPLICATION_JSON', \
+   validResponseCodes: '100:599', \
    httpMode: 'POST', \
    consoleLogResponseBody: true, \
    requestBody: '{}', \
    url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + uuid + \
       '\')/$service/stop?representation=aws_instance.$details'
    // {$baseUrl}/{$pluralType}('{$key}')/$service/stop?representation={$representation}.$detai&trackngId={$trackngId}
+   
+   if response.status != 200 {
+      sucess = false
+   }
+   
    return success
 }
 
