@@ -171,6 +171,7 @@ Boolean dropInstance(uuid) {
 @NonCPS
 Boolean startInstance(uuid) {
    println("startInstance with " + uuid)
+   println("x2x2x2")
    Boolean success = false
    
    //consoleLogResponseBody: true, \
@@ -183,6 +184,7 @@ Boolean startInstance(uuid) {
       '\')/$service/start?representation=aws_instance.$details'
    // {$baseUrl}/{$pluralType}('{$key}')/$service/start?representation={$representation}.$detai&trackngId={$trackngId}
 
+   println("x3x3x3")
    println("XXXXXXXXXXXXXXXXXXXXXXXXx")
    println("response: " + response)
    println("response.status: " + response.status)
@@ -192,6 +194,7 @@ Boolean startInstance(uuid) {
       println("result: " + result)
       println("result.$diagnoses: " + result.$diagnoses)
    }
+   println("x4x4x4")
    return success
 }
 @NonCPS
