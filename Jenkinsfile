@@ -168,7 +168,7 @@ Boolean dropInstance(uuid) {
    return success
 }
 
-@NonCPS
+//@NonCPS
 Boolean startInstance(uuid) {
    println("startInstance with " + uuid)
    println("x2x2x2")
