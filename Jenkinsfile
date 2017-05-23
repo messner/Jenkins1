@@ -175,12 +175,17 @@ Boolean startInstance(uuid) {
    
    def response = httpRequest authentication: Globals.credId, \
    contentType: 'APPLICATION_JSON', \
+   validResponseCodes: '100:599', \
    httpMode: 'POST', \
    consoleLogResponseBody: true, \
    requestBody: '{}', \
    url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + uuid + \
       '\')/$service/start?representation=aws_instance.$details'
    // {$baseUrl}/{$pluralType}('{$key}')/$service/start?representation={$representation}.$detai&trackngId={$trackngId}
+
+   if (response.status != 200) {
+      sucess = false
+   }
    return success
 }
 @NonCPS
@@ -201,7 +206,6 @@ Boolean stopInstance(uuid) {
    if (response.status != 200) {
       sucess = false
    }
-   
    return success
 }
 
