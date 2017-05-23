@@ -7,7 +7,7 @@ class Globals {
    static String aws_host = "http://10.169.140.65:8144"
    static String credId = '1dc551f1-a2cb-4965-9bee-346302f60433'
    static String aws_source = 'AWS-JM-TEST1'
-   static String aws_dest = 'AWS-JM-TEST5'
+   static String aws_dest = 'AWS-JM-TEST3'
    static String aws_alternative = 'AWS-JM-TEST6'
 }
 
@@ -41,6 +41,9 @@ node {
    if (uuid != "") {
       // check, if destination already exists
       if (getUuidByName(Globals.aws_dest) != "") {
+         // Start instance (for test)
+         startInstance(uuid)
+         /*
          println("destination exists -> drop")
          dropInstance(uuid)
          aws_clone = Globals.alternative
@@ -52,12 +55,13 @@ node {
          } else {
             
          }
+         */
       }
       else {
          aws_clone = Globals.aws_dest
       }
       if (aws_clone != "") {
-         cloneInstance(uuid , aws_clone)
+         //cloneInstance(uuid , aws_clone)
       }
    }
    
@@ -159,6 +163,23 @@ Boolean dropInstance(uuid) {
    // {$baseUrl}/{$pluralType}('{$key}')/$service/deleteInstance?representation={$representation}.$detai&snapshotBeforeDelete={snapshotBeforeDelete}&trackngId={$trackngId}
    return success
 }
+
+@NonCPS
+Boolean startInstance(uuid) {
+   println("startInstance with " + uuid)
+   Boolean success = false
+   
+   def response = httpRequest authentication: Globals.credId, \
+   contentType: 'APPLICATION_JSON', \
+   httpMode: 'POST', \
+   consoleLogResponseBody: true, \
+   requestBody: '{}', \
+   url: Globals.aws_host + '/sdata/syracuse/collaboration/syracuse/aws_instances(\'' + uuid + \
+      '\')/$service/start?representation=aws_instance.$details'
+   // {$baseUrl}/{$pluralType}('{$key}')/$service/start?representation={$representation}.$detai&trackngId={$trackngId}
+   return success
+}
+
 
 @NonCPS
 def cloneInstance(uuid, name) {
